@@ -1,10 +1,12 @@
 import RPi.GPIO as GPIO
 import time
+from callAPI import call_api
 
-GPIO.setmode(GPIO.BCM)
+# GPIO.setmode(GPIO.BCM)
 
 TRIGGER = 23
 ECHO = 24
+SENSOR_NAME = "NAME"
 
 GPIO.setup(TRIGGER, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
@@ -21,5 +23,7 @@ while True:
         Stop = time.time()
     TimeElapsed = Stop - Start
     distance = (TimeElapsed * 34300) / 2
+    distance = 1
     print(distance)
+    # call_api(SENSOR_NAME, distance)
     time.sleep(1)
